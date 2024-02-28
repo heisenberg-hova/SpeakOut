@@ -1,8 +1,7 @@
 :root {
-    --primaryColor: #09C5A3;
-    --secondaryColor: #00A98B;
+    --primaryColor: #800080;
+    --secondaryColor: #008080;
 }
-
 /* Admin Dashboard Page */
 #wrapper #dashboardHeroContainer {
     grid-column: 1 / span 4;
