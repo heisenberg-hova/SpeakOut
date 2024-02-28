@@ -399,3 +399,16 @@
         margin-right: 0;
     }
 }
+
+#start-video-call {
+    background: var(--secondaryColor); /* Change background color as needed */
+    color: white; /* Text color */
+    border: none;
+    border-radius: 50%; /* Make it round */
+    padding: 10px; /* Adjust padding as needed */
+    cursor: pointer;
+}
+
+#start-video-call i {
+    font-size: 24px; /* Adjust icon size as needed */
+}

@@ -1,6 +1,6 @@
 :root {
-    --primaryColor: #09C5A3;
-    --secondaryColor: #00A98B;
+    --primaryColor: #800080;
+    --secondaryColor: #a90071;
 }
 
 @media (max-width: 575.98px) {

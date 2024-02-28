@@ -18,6 +18,9 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
+    <!-- Google Client Library-->
+    <script src="https://apis.google.com/js/api.js"></script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +32,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <link rel="stylesheet" type="text/css" href="./css/chat-session.css" />
     <link rel="stylesheet" type="text/css" href="./css/responsive.css" />
+    
 </head>
 
 <body>
@@ -126,8 +130,12 @@
                         <p><span id="chatActiveState">Offline</span></p>
                     </div>
                 </div>
+
                 <div id="chatTools">
+                    <!-- Phone call button-->
                     <a id="chatPhone" href=""><i class="bi bi-telephone-fill"></i></a>
+                    <!-- Video call button-->
+                    <button id="start-video-call"><i class="bi bi-camera-video"></i></button>
                 </div>
             </div>
         </div>
@@ -144,6 +152,8 @@
         </div>
 
         <div id="footerPlaceHolder"></div>
+        
+        </div>
     </div>
 
     <!-- jQuery CDN -->
