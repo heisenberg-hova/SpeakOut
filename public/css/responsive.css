@@ -15,7 +15,7 @@
     }
 
     #wrapper #navPlaceHolder {
-        display: none;
+        display: block;
     }
 
     #wrapper #header {
@@ -1529,11 +1529,11 @@
     }
 
     #wrapper #navPlaceHolder {
-        display: none;
+        display: block;
     }
 
     #wrapper #header {
-        display: none;
+        display: block;
     }
 
     #wrapper #headMobile {
@@ -2879,11 +2879,11 @@
     }
 
     #wrapper #navPlaceHolder {
-        display: none;
+        display: block;
     }
 
     #wrapper #header {
-        display: none;
+        display: block;
     }
 
     #wrapper #headMobile {
@@ -2896,7 +2896,7 @@
     }
 
     #wrapper #therapistChat {
-        display: none;
+        display: block;
     }
 
     #wrapper #signUp {

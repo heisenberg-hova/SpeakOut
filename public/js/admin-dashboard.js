@@ -394,3 +394,14 @@ for (var i = 0x0; i < inputEdit['length']; i++) {
         _0x59e691['key'] === _0x168d29(0x221) && (_0x59e691[_0x168d29(0x1f9)](), document[_0x168d29(0x1b6)](_0x168d29(0x1ff))[_0x168d29(0x1e6)]());
     });
 }
+
+$(document).ready(function() {
+    $('#generateReportBtn').click(function(e) {
+        e.preventDefault(); // Prevent the default behavior of the anchor tag
+        // Send an AJAX request to the server to generate the report
+        $.get('/generate-report', function(response) {
+            // Handle the response if needed
+            console.log('Report generated:', response);
+        });
+    });
+});

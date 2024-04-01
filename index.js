@@ -19,6 +19,19 @@ const {
 const io = new Server(server);
 const nodemailer = require('nodemailer');
 
+const PDFDocument = require('pdfkit');
+const fs = require('fs');
+
+const UserModel = require("./models/BBY_31_users");
+const ShoppingCartModel = require("./models/BBY_31_shoppingCarts");
+
+// Define Mongoose schemas and models
+const userSchema = UserModel.schema; // Get the schema from the UserModel
+const shoppingCartSchema = ShoppingCartModel.schema; // Get the schema from the ShoppingCart model
+
+const Users = mongoose.model('User', userSchema); // Create User model
+const ShoppingCarts = mongoose.model('ShoppingCart', shoppingCartSchema); // Create ShoppingCart model
+
 /**
  * MangoDB connection.
  */
@@ -34,8 +47,90 @@ mongoose.connect(process.env.DATABASE_URL, {
     })
     .then(() => {
         console.log("Connected to MongoDB");
+
+        // Define Mongoose schemas and models
+        const userSchema = UserModel.schema; // Get the schema from the UserModel
+        const shoppingCartSchema = ShoppingCartModel.schema; // Get the schema from the ShoppingCart model
+
+        const Users = mongoose.model('User', userSchema); // Create User model
+        const ShoppingCarts = mongoose.model('ShoppingCart', shoppingCartSchema); // Create ShoppingCart model
+
+        // Route to generate and download the PDF report
+        app.get('/generate-report', async (req, res) => {
+            try {
+                // Retrieve data from MongoDB
+                const usersCount = await Users.countDocuments(); // Updated to use Users
+                const sessionsPurchased = await ShoppingCarts.countDocuments(); // Updated to use ShoppingCarts
+                // Query to find most active therapists (example)
+                const mostActiveTherapists = await Users.aggregate([ // Updated to use Users
+                    { $match: { /* Add criteria to filter therapists if needed */ } },
+                    { $lookup: { from: 'shoppingcarts', localField: '_id', foreignField: 'therapistId', as: 'carts' } },
+                    { $addFields: { sessionCount: { $size: '$carts' } } },
+                    { $sort: { sessionCount: -1 } },
+                    { $limit: 5 } // Example: Get top 5 most active therapists
+                ]);
+
+                // Generate PDF report
+                const pdfPath = await generatePDFReport(sessionsPurchased, usersCount, mostActiveTherapists);
+
+                // Send the PDF file as a response if it was successfully generated
+                if (pdfPath) {
+                    res.download(pdfPath, 'user_activity_report.pdf', (err) => {
+                        if (err) {
+                            console.error('Error sending PDF:', err);
+                            res.status(500).send('An error occurred while sending the PDF.');
+                        } else {
+                            // Delete the temporary PDF file after sending
+                            fs.unlink(pdfPath, (err) => {
+                                if (err) {
+                                    console.error('Error deleting PDF file:', err);
+                                }
+                            });
+                        }
+                    });
+                } else {
+                    // PDF generation failed
+                    res.status(500).send('An error occurred while generating the PDF report.');
+                }
+            } catch (error) {
+                console.error('Error generating report:', error);
+                res.status(500).send('An error occurred while generating the report.');
+            }
+        });
     })
     .catch((err) => console.log(err));
+
+// Function to generate the PDF report
+async function generatePDFReport(sessionsPurchased, usersCount, mostActiveTherapists) {
+    // Create a new PDF document
+    const doc = new PDFDocument();
+    const pdfPath = 'user_activity_report.pdf'; // Path to save the PDF file
+
+    // Pipe the PDF document to a writable stream to save it to a file
+    const writeStream = fs.createWriteStream(pdfPath);
+    doc.pipe(writeStream);
+
+    // Add content to the PDF document
+    doc.fontSize(18).text('User Activity Report', { align: 'center' });
+    doc.moveDown();
+
+    doc.fontSize(14).text(`Total Sessions Purchased: ${sessionsPurchased}`);
+    doc.moveDown();
+
+    doc.fontSize(14).text(`Total Users: ${usersCount}`);
+    doc.moveDown();
+
+    doc.fontSize(14).text('Most Active Therapists:', { underline: true });
+    mostActiveTherapists.forEach((therapist) => {
+        doc.fontSize(12).text(`- ${therapist.name}: ${therapist.sessionCount} sessions`);
+    });
+
+    // Finalize the PDF document
+    doc.end();
+
+    // Return the path of the generated PDF file
+    return pdfPath;
+}
 
 /**
  * Middlewares to set up view engine.

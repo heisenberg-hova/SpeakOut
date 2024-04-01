@@ -134,8 +134,9 @@
                 <div id="chatTools">
                     <!-- Phone call button-->
                     <a id="chatPhone" href=""><i class="bi bi-telephone-fill"></i></a>
-                    <!-- Video call button-->
-                    <button id="start-video-call"><i class="bi bi-camera-video"></i></button>
+
+                    <!-- Video call button -->
+                    <a id="chatVideo" href=""><i class="bi bi-camera-video-fill"></i></a>
                 </div>
             </div>
         </div>
@@ -160,6 +161,51 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="./js/main.js"></script>
+
+        <!-- JavaScript code to handle starting a video call -->
+    <script>
+        $(document).ready(function() {
+            $('#chatVideo').click(async function(event) {
+                event.preventDefault(); // Prevent the default action of the link
+
+                try {
+                    // Generate timestamps dynamically
+                    const now = new Date();
+                    const startTime = now.toISOString();
+                    now.setHours(now.getHours() + 1); // Assuming a meeting duration of 1 hour
+                    const endTime = now.toISOString();
+
+                    // Send a request to the server to create a meeting
+                    const response = await fetch('/createMeeting', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            startTime: startTime,
+                            endTime: endTime
+                        })
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        // Display the meeting link in the UI
+                        alert('Meeting link: ' + data.link);
+                    } else {
+                        alert('Failed to create meeting: ' + data.error);
+                    }
+                } catch (error) {
+                    console.error('Error starting video call:', error);
+                    alert('Error starting video call');
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
+
+
+
 </body>
 
 </html>

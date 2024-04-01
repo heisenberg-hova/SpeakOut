@@ -1,5 +1,5 @@
 function _0x1100() {
-    var _0x18d48b = ['<div><a\x20href=\x22/therapists#3\x22>View\x20Therapist</a></div>', '225858UakSCy', '\x20years\x20of\x20experience</p>', '117tiHnej', 'firstName', '36968TfqueK', '<div><a\x20href=\x22/therapists#2\x22>View\x20Therapist</a></div>', '<h2>$', 'sessionCost', '2870176xTlnsk', '733320hbmZjb', '</p>', 'Marker', 'GET', 'getElementById', '<p>', '<div\x20class=\x22therapyCard\x22>', '<span>\x20/\x20session</span></h2>', '153060daddzx', '163254ZFaILY', '30dENDTt', '<div><a\x20href=\x22/therapists#1\x22>View\x20Therapist</a></div>', '320919IikvZw', 'lastName', '<h4>Therapist\x20Details</h4>', 'ajax', 'map', 'yearsExperience', '</div>', '/getTherapists', '1FsegZh', 'initMap', 'therapistCards', 'innerHTML', 'maps'];
+    var _0x18d48b = ['<div><a\x20href=\x22/therapists#3\x22>View\x20Therapist</a></div>', '225858UakSCy', '\x20years\x20of\x20experience</p>', '117tiHnej', 'firstName', '36968TfqueK', '<div><a\x20href=\x22/therapists#2\x22>View\x20Therapist</a></div>', '<h2>Kshs.', 'sessionCost', '2870176xTlnsk', '733320hbmZjb', '</p>', 'Marker', 'GET', 'getElementById', '<p>', '<div\x20class=\x22therapyCard\x22>', '<span>\x20/\x20session</span></h2>', '153060daddzx', '163254ZFaILY', '30dENDTt', '<div><a\x20href=\x22/therapists#1\x22>View\x20Therapist</a></div>', '320919IikvZw', 'lastName', '<h4>Therapist\x20Details</h4>', 'ajax', 'map', 'yearsExperience', '</div>', '/getTherapists', '1FsegZh', 'initMap', 'therapistCards', 'innerHTML', 'maps'];
     _0x1100 = function() {
         return _0x18d48b;
     };
@@ -46,11 +46,12 @@ function handleGetTherapists(_0x4416c5) {
     _0x23f84d += _0x735628(0x16e) + _0x200a53['sessionCost'] + '<span>\x20/\x20session</span></h2>', _0x23f84d += _0x735628(0x17f), _0x23f84d += '<p>' + _0x200a53[_0x735628(0x18e)] + '\x20' + _0x200a53[_0x735628(0x17e)] + _0x735628(0x172), _0x23f84d += _0x735628(0x176) + _0x200a53[_0x735628(0x182)] + _0x735628(0x18c), _0x23f84d += _0x735628(0x18a), _0x23f84d += '</div>', document[_0x735628(0x175)]('therapistCards')[_0x735628(0x188)] += _0x4e98a6, document[_0x735628(0x175)](_0x735628(0x187))[_0x735628(0x188)] += _0x130f1f, document[_0x735628(0x175)](_0x735628(0x187))[_0x735628(0x188)] += _0x23f84d;
 }
 
+/*
 function initMap() {
     var _0x1e3740 = _0x47f8a7;
     const _0x2a6eea = {
-            'lat': 49.2484615,
-            'lng': -123.0048777
+            'lat': -1.1832757,
+            'lng': 36.9298676
         },
         _0xcb3868 = new google['maps']['Map'](document['getElementById'](_0x1e3740(0x181)), {
             'zoom': 0xf,
@@ -62,3 +63,4 @@ function initMap() {
         });
 }
 window[_0x47f8a7(0x186)] = initMap;
+*/

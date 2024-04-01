@@ -484,6 +484,28 @@ $(document).ready(async function () {
         }
     }
 
+    //report button
+    $(document).ready(function() {
+        // Event handler for the report generation button
+        $('#generateReportBtn').click(function() {
+            // Make an AJAX request to the server to generate the report
+            $.ajax({
+                url: '/generate-report', // Server-side route to handle report generation
+                method: 'GET',
+                success: function(data) {
+                    // Redirect to the URL of the generated PDF report
+                    window.location.href = '/download-report';
+                },
+                error: function(err) {
+                    console.error('Error generating report:', err);
+                    // Display an error message to the user
+                    alert('An error occurred while generating the report.');
+                }
+            });
+        });
+    });
+
+
     /**
      * Get all settings icons from each row and iterate in a loop to check which one was clicked.
      */

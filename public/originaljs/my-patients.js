@@ -29,7 +29,7 @@ $(document).ready(async function () {
             x += `<td>1 Year</td>`
             multiplier = 6;
         }
-        x += `<td>$${parseFloat(patientInfo.sessionCost * multiplier * 1.12).toFixed(2)}</td>`
+        x += `<td>Kshs${parseFloat(patientInfo.sessionCost * multiplier * 1.12).toFixed(2)}</td>`
         x += `<td>${cartData.orderId}</td>`
         if (cartData.status == "refunded") {
             x += `<td>Refunded</td></tr>`

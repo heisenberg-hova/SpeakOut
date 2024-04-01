@@ -163,7 +163,7 @@
                     </div>
                     <div id="cartCostSec">
                         <p>Cost: </p>
-                        <p>$<span id="cartCost"></span></p>
+                        <p>Kshs<span id="cartCost"></span></p>
                     </div>
                 </div>
             </div>
@@ -176,7 +176,7 @@
                     <span id="subTotal"></span>
                 </div>
                 <div id="taxSec">
-                    <p>Tax: </p>
+                    <p>Service Charge: </p>
                     <span id="taxTotal"></span>
                 </div>
                 <div id="totalSec">
@@ -185,7 +185,16 @@
                 </div>
             </div>
 
-            <button id="confirmOrder">Confirm Order</button>
+            <a href="https://paystack.com/pay/speak-out"><button id="confirmOrder">Confirm Order</button></a>
+
+            <script>
+                // Function to redirect to the payment page
+                function redirectToPaymentPage() {
+                    // Redirect to the Paystack payment page
+                    document.getElementById("confirmOrder").href = "https://paystack.com/pay/speak-out";
+                }
+            </script>
+
             <p id="checkoutErrorMessage">&nbsp;</p>
         </div>
 
@@ -237,4 +246,3 @@
 </body>
 
 </html>
--->
